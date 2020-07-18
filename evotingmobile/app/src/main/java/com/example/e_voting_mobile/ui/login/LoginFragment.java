@@ -2,14 +2,15 @@ package com.example.e_voting_mobile.ui.login;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.view.KeyEvent;
+import android.text.TextUtils;
+import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -19,41 +20,77 @@ import com.example.e_voting_mobile.R;
 public class LoginFragment extends Fragment {
 
     private LoginViewModel loginViewModel;
+    private Button loginButton;
+    private EditText emailText;
+    private EditText passwordText;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
-        final View root = inflater.inflate(R.layout.fragment_home, container, false);
-        final EditText emailText = root.findViewById(R.id.editEmail);
-        final EditText passwordText = root.findViewById(R.id.editPassword);
-        emailText.setOnEditorActionListener(new EditText.OnEditorActionListener() {
-            @Override
-            public boolean onEditorAction(TextView textView, int actionId, KeyEvent keyEvent) {
-                if (actionId == EditorInfo.IME_ACTION_DONE) {
-                    if (root != null) {
-                        InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
-                        imm.hideSoftInputFromWindow(root.getWindowToken(), 0);
-                    }
-                    return true;
+        final View root = inflater.inflate(R.layout.fragment_login, container, false);
+        emailText = root.findViewById(R.id.editEmail);
+        passwordText = root.findViewById(R.id.editPassword);
+        loginButton = root.findViewById(R.id.login_button);
+        emailText.setOnEditorActionListener((textView, actionId, keyEvent) -> {
+            if (actionId == EditorInfo.IME_ACTION_DONE) {
+                if (root != null) {
+                    InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow(root.getWindowToken(), 0);
                 }
-                return false;
+                return true;
             }
+            return false;
+        });
+        passwordText.setOnEditorActionListener((textView, actionId, keyEvent) -> {
+            if (actionId == EditorInfo.IME_ACTION_DONE) {
+                if (root != null) {
+                    InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow(root.getWindowToken(), 0);
+                }
+                return true;
+            }
+            return false;
+        });
+        loginButton.setOnClickListener(view -> {
+            if (validateEnteredData()) {
+                performLogin(emailText.getText().toString(), passwordText.getText().toString());
+            }
+        });
 
-        });
-        passwordText.setOnEditorActionListener(new EditText.OnEditorActionListener() {
-            @Override
-            public boolean onEditorAction(TextView textView, int actionId, KeyEvent keyEvent) {
-                if (actionId == EditorInfo.IME_ACTION_DONE) {
-                    if (root != null) {
-                        InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
-                        imm.hideSoftInputFromWindow(root.getWindowToken(), 0);
-                    }
-                    return true;
-                }
-                return false;
-            }
-        });
+
         return root;
     }
 
+
+    private boolean validateEnteredData() {
+        boolean isValid = true;
+        if (isEmpty(emailText)) {
+            emailText.setError("You must enter email to login!");
+            isValid = false;
+        } else if (isEmpty(passwordText)) {
+            passwordText.setError("You must enter password to login!");
+            isValid = false;
+
+        }
+        if (!isEmail(emailText)) {
+            emailText.setError("Enter valid email!");
+            isValid = false;
+
+        }
+        return isValid;
+    }
+
+    boolean isEmpty(EditText text) {
+        CharSequence str = text.getText().toString();
+        return TextUtils.isEmpty(str);
+    }
+
+    boolean isEmail(EditText text) {
+        CharSequence email = text.getText().toString();
+        return (!TextUtils.isEmpty(email) && Patterns.EMAIL_ADDRESS.matcher(email).matches());
+    }
+
+    private void performLogin(String toString, String toString1) {
+
+    }
 }
