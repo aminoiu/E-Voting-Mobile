@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/history_navigation"
+    app:startDestination="@id/nav_history">
+
+    <fragment
+        android:id="@+id/nav_history"
+        android:name="com.example.e_voting_mobile.ui.login.HistoryFragment"
+        android:label="Voting history"
+        tools:layout="@layout/fragment_history" />
+</navigation>
