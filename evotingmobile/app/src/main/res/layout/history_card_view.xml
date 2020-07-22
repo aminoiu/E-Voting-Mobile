@@ -1,58 +1,223 @@
-<androidx.cardview.widget.CardView
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/card_view"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    card_view:cardCornerRadius="4dp"
-    android:layout_margin="5dp">
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp"
+    card_view:cardBackgroundColor="#D9DBEA"
+    card_view:cardCornerRadius="5dp">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
         <TextView
-            android:id="@+id/title"
+            android:id="@+id/votingTitle"
             android:layout_width="match_parent"
             android:layout_height="20dp"
-            android:background="@color/colorPrimary"
-            android:text="contact det"
+            android:background="#0D0B10"
             android:gravity="center_vertical"
+            android:text="Voting Title"
             android:textColor="@android:color/white"
-            android:textSize="14dp"/>
+            android:textSize="14sp" />
 
         <TextView
-            android:id="@+id/txtName"
+            android:id="@+id/startDateValue"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Name"
+            android:layout_below="@id/votingTitle"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="10dp"
             android:gravity="center_vertical"
-            android:textSize="10dp"
-            android:layout_below="@id/title"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="5dp"/>
+            android:text="Start date"
+            android:textColor="@android:color/widget_edittext_dark"
+            android:textSize="10sp" />
 
+        <!--        <TextView-->
+        <!--            android:id="@+id/startDateValue"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_alignBaseline="@id/startDate"-->
+        <!--            android:layout_marginStart="75dp"-->
+        <!--            android:layout_marginTop="10dp"-->
+        <!--            android:text="Start date value"-->
+        <!--            android:textColor="@android:color/secondary_text_light"-->
+        <!--            android:textSize="10dp" />-->
+
+
+        <!--        <TextView-->
+        <!--            android:id="@+id/statusValue"-->
+        <!--            android:layout_width="113dp"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_alignBaseline="@id/status"-->
+        <!--            android:layout_marginStart="285dp"-->
+        <!--            android:layout_marginTop="10dp"-->
+        <!--            android:text="Status value"-->
+        <!--            android:textColor="@android:color/secondary_text_light"-->
+        <!--            android:textSize="10dp" />-->
+
+        <!--        <TextView-->
+        <!--            android:id="@+id/statusValue"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_alignBaseline="@id/startDateValue"-->
+        <!--            android:layout_alignParentEnd="true"-->
+        <!--            android:gravity="center_vertical"-->
+        <!--            android:textSize="10dp"-->
+        <!--            android:layout_marginTop="10dp"-->
+        <!--            android:layout_marginStart="5dp"-->
+        <!--            android:text="Status"-->
+        <!--            android:textColor="@android:color/widget_edittext_dark"/>-->
         <TextView
-            android:id="@+id/txtSurname"
+            android:id="@+id/statusValue"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Surname"
+            android:layout_alignBaseline="@id/startDateValue"
+            android:layout_alignParentLeft="true"
+            android:textSize="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="200dp"
+            android:text="Status"
+            android:textColor="@android:color/widget_edittext_dark" />
+
+        <TextView
+            android:id="@+id/voterNumberValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/startDateValue"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="11dp"
             android:gravity="center_vertical"
-            android:textSize="10dp"
-            android:layout_below="@+id/txtName"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="5dp"/>
+            android:text="Voters nr."
+            android:textColor="@android:color/widget_edittext_dark"
+            android:textSize="10dp" />
 
+        <!--        <TextView-->
+        <!--            android:id="@+id/voterNumberValue"-->
+        <!--            android:layout_width="117dp"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_below="@id/startDateValue"-->
+        <!--            android:layout_marginTop="10dp"-->
+        <!--            android:layout_marginStart="75dp"-->
+        <!--            android:text="Value"-->
+        <!--            android:textColor="@android:color/secondary_text_light"-->
+        <!--            android:textSize="10dp" />-->
+
+        <!--        <TextView-->
+        <!--            android:id="@+id/candidateNumberValue"-->
+        <!--            android:layout_width="113dp"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_alignBaseline="@id/candidateNumber"-->
+        <!--            android:layout_marginStart="285dp"-->
+        <!--            android:layout_marginTop="10dp"-->
+        <!--            android:text="Value"-->
+        <!--            android:textColor="@android:color/secondary_text_light"-->
+        <!--            android:textSize="10dp" />-->
+
+        <!--        <TextView-->
+        <!--            android:id="@+id/candidateNumberValue"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_alignBaseline="@id/voterNumberValue"-->
+        <!--            android:layout_alignParentEnd="true"-->
+        <!--            android:layout_marginTop="10dp"-->
+        <!--            android:layout_marginEnd="121dp"-->
+        <!--            android:text="Candidates nr."-->
+        <!--            android:textColor="@android:color/widget_edittext_dark"-->
+        <!--            android:textSize="10dp" />-->
         <TextView
-            android:id="@+id/txtEmail"
+            android:id="@+id/candidateNumberValue"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Email"
+            android:layout_alignBaseline="@id/voterNumberValue"
+            android:layout_alignParentLeft="true"
             android:textSize="10dp"
             android:layout_marginTop="10dp"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="150dp"
-            android:layout_alignBaseline="@id/txtName"/>
+            android:layout_marginLeft="200dp"
+            android:text="Candidates nr."
+            android:textColor="@android:color/widget_edittext_dark" />
+
+        <TextView
+            android:id="@+id/votesNumberValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/voterNumberValue"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="11dp"
+            android:gravity="center_vertical"
+            android:text="Votes number"
+            android:textColor="@android:color/widget_edittext_dark"
+            android:textSize="10dp" />
+
+        <!--        <TextView-->
+        <!--            android:id="@+id/votesNumberValue"-->
+        <!--            android:layout_width="117dp"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_alignBaseline="@id/votesNumber"-->
+        <!--            android:layout_marginStart="75dp"-->
+        <!--            android:layout_marginTop="10dp"-->
+        <!--            android:text="Value"-->
+        <!--            android:textColor="@android:color/secondary_text_light"-->
+        <!--            android:textSize="10dp" />-->
+
+        <!--        <TextView-->
+        <!--            android:id="@+id/winnerValue"-->
+        <!--            android:layout_width="117dp"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_alignBaseline="@id/winner"-->
+        <!--            android:layout_marginStart="285dp"-->
+        <!--            android:layout_marginTop="10dp"-->
+        <!--            android:text="Winner value"-->
+        <!--            android:textColor="@android:color/secondary_text_light"-->
+        <!--            android:textSize="10dp" />-->
+
+        <!--        <TextView-->
+        <!--            android:id="@+id/winnerValue"-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_alignBaseline="@id/votesNumberValue"-->
+        <!--            android:layout_alignParentEnd="true"-->
+        <!--        android:layout_marginTop="10dp"-->
+        <!--        android:layout_marginEnd="154dp"-->
+        <!--            android:text="Winner"-->
+        <!--            android:textColor="@android:color/widget_edittext_dark"-->
+        <!--            android:textSize="10dp" />-->
+        <TextView
+            android:id="@+id/winnerValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@id/votesNumberValue"
+            android:layout_alignParentLeft="true"
+            android:textSize="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="200dp"
+            android:text="Winner"
+            android:textColor="@android:color/widget_edittext_dark" />
+
+        <TextView
+            android:id="@+id/initiatorValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/votesNumberValue"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="10dp"
+            android:gravity="center_vertical"
+            android:paddingBottom="2dp"
+            android:text="Initiated by:"
+            android:textColor="@android:color/widget_edittext_dark"
+            android:textSize="10dp" />
+
+        <!--        <TextView-->
+        <!--            android:id="@+id/initiatorValue"-->
+        <!--            android:layout_width="218dp"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_alignBaseline="@id/initiator"-->
+        <!--            android:layout_marginStart="75dp"-->
+        <!--            android:layout_marginTop="10dp"-->
+        <!--            android:text="Value"-->
+        <!--            android:textColor="@android:color/secondary_text_light"-->
+        <!--            android:textSize="10dp" />-->
 
     </RelativeLayout>
+
 </androidx.cardview.widget.CardView>

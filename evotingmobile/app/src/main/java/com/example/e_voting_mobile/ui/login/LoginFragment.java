@@ -15,7 +15,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import androidx.annotation.Keep;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
@@ -30,14 +29,17 @@ import com.example.e_voting_mobile.voting_history.HistoryActivity;
 public class LoginFragment extends Fragment {
 
     private LoginViewModel loginViewModel;
-     Button loginButton;
-     EditText emailText;
-     EditText passwordText;
+    Button loginButton;
+    EditText emailText;
+    EditText passwordText;
+    View root = null;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
-        final View root = inflater.inflate(R.layout.fragment_login, container, false);
+        if (root == null) {
+            root = inflater.inflate(R.layout.fragment_login, container, false);
+        }
 
         loginViewModel = new ViewModelProvider(this).get(LoginViewModel.class);
         loginViewModel.getResponseLiveData().observe(getViewLifecycleOwner(), this::handleSuccessfulLogin);
@@ -46,10 +48,15 @@ public class LoginFragment extends Fragment {
         emailText = root.findViewById(R.id.editEmail);
         passwordText = root.findViewById(R.id.editPassword);
         loginButton = root.findViewById(R.id.login_button);
+        emailText.clearFocus();
+        if (SessionManager.getInstance().getAuthenticationEmail() != null) {
+            emailText.setText(SessionManager.getInstance().getAuthenticationEmail());
+            passwordText.requestFocus();
+        }
         emailText.setOnEditorActionListener((textView, actionId, keyEvent) -> {
             if (actionId == EditorInfo.IME_ACTION_DONE) {
                 if (root != null) {
-                    InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+                    InputMethodManager imm = (InputMethodManager) requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
                     imm.hideSoftInputFromWindow(root.getWindowToken(), 0);
                 }
                 return true;
@@ -59,7 +66,7 @@ public class LoginFragment extends Fragment {
         passwordText.setOnEditorActionListener((textView, actionId, keyEvent) -> {
             if (actionId == EditorInfo.IME_ACTION_DONE) {
                 if (root != null) {
-                    InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+                    InputMethodManager imm = (InputMethodManager) requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
                     imm.hideSoftInputFromWindow(root.getWindowToken(), 0);
                 }
                 return true;
@@ -67,7 +74,7 @@ public class LoginFragment extends Fragment {
             return false;
         });
         loginButton.setOnClickListener(view -> {
-            InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+            InputMethodManager imm = (InputMethodManager) requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
             imm.hideSoftInputFromWindow(root.getWindowToken(), 0);
             if (validateEnteredData()) {
                 performLogin(emailText.getText().toString(), passwordText.getText().toString());
@@ -125,10 +132,14 @@ public class LoginFragment extends Fragment {
             Toast.makeText(getContext(), "Welcome " + loginResponse.getEmail() + "!!!", Toast.LENGTH_LONG).show();
             SessionManager.getInstance().setAuthenticationToken(loginResponse.getToken());
             SessionManager.getInstance().setAuthenticationEmail(loginResponse.getEmail());
+            SessionManager.getInstance().setAuthenticatedRoles(loginResponse.getRoles());
             Intent intent = new Intent(getActivity(), HistoryActivity.class);
             startActivity(intent);
             requireActivity().finish();
+            //the User details fragment will be accessed only by ADMIN users
+
             Log.i("BEARER TOKEN", loginResponse.getToken());
         }
     }
+
 }

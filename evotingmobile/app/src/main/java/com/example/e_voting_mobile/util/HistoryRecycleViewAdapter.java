@@ -30,14 +30,19 @@ public class HistoryRecycleViewAdapter extends RecyclerView.Adapter<HistoryRecyc
         return new HistoryViewHolder(itemView);
     }
 
-    @Override
+   @Override
     public void onBindViewHolder(@NonNull HistoryViewHolder holder, int position) {
-VotingDataInfo votingDataInfo=votingDataInfoList.get(position);
-        holder.vName.setText(votingDataInfo.name);
-        holder.vSurname.setText(votingDataInfo.surname);
-        holder.vEmail.setText(votingDataInfo.email);
-        holder.vTitle.setText(votingDataInfo.name + " " + votingDataInfo.surname);
-    }
+       VotingDataInfo votingDataInfo = votingDataInfoList.get(position);
+       holder.vVotingTitle.setText(votingDataInfo.getVotingTitle());
+       holder.vStartDateValue.setText(VotingDataInfo.START_DATE_PREFIX.concat(votingDataInfo.getStartDate()));
+       holder.vStatusValue.setText(VotingDataInfo.STATUS_PREFIX.concat(votingDataInfo.getStatus()));
+       holder.vVoterNumberValue.setText(VotingDataInfo.VOTERS_NR_PREFIX.concat(votingDataInfo.getVotersNumber()));
+       holder.vCandidateNumberValue.setText(VotingDataInfo.CANDIDATES_NR_PREFIX.concat(votingDataInfo.getCandidateNumbers()));
+       holder.vVotesNumberValue.setText(VotingDataInfo.VOTES_NR_PREFIX.concat(votingDataInfo.getVotesNumber()));
+       holder.vWinnerValue.setText(VotingDataInfo.WINNER_PREFIX.concat(votingDataInfo.getVotingWinner()));
+       holder.vInitiatorValue.setText(VotingDataInfo.INITIATED_BY_PREFIX.concat(votingDataInfo.getAdminId()));
+
+   }
 
     @Override
     public int getItemCount() {
@@ -45,16 +50,25 @@ VotingDataInfo votingDataInfo=votingDataInfoList.get(position);
     }
 
     public class HistoryViewHolder extends RecyclerView.ViewHolder {
-        protected TextView vName;
-        protected TextView vSurname;
-        protected TextView vEmail;
-        protected TextView vTitle;
+        protected TextView vVotingTitle;
+        protected TextView vStartDateValue;
+        protected TextView vStatusValue;
+        protected TextView vVoterNumberValue;
+        protected TextView vCandidateNumberValue;
+        protected TextView vVotesNumberValue;
+        protected TextView vWinnerValue;
+        protected TextView vInitiatorValue;
+
         public HistoryViewHolder(@NonNull View v) {
             super(v);
-            vName =  (TextView) v.findViewById(R.id.txtName);
-            vSurname = (TextView)  v.findViewById(R.id.txtSurname);
-            vEmail = (TextView)  v.findViewById(R.id.txtEmail);
-            vTitle = (TextView) v.findViewById(R.id.title);
+            vVotingTitle = v.findViewById(R.id.votingTitle);
+            vStartDateValue = v.findViewById(R.id.startDateValue);
+            vStatusValue = v.findViewById(R.id.statusValue);
+            vVoterNumberValue = v.findViewById(R.id.voterNumberValue);
+            vCandidateNumberValue = v.findViewById(R.id.candidateNumberValue);
+            vVotesNumberValue = v.findViewById(R.id.votesNumberValue);
+            vWinnerValue = v.findViewById(R.id.winnerValue);
+            vInitiatorValue = v.findViewById(R.id.initiatorValue);
         }
     }
 }
