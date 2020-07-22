@@ -1,10 +1,10 @@
-package com.example.e_voting_mobile.ui.login;
+package com.example.e_voting_mobile.ui.history;
 
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.example.e_voting_mobile.data.security.UserDetailsResponse;
-import com.example.e_voting_mobile.data.security.VotingDataResponse;
+import com.example.e_voting_mobile.data.network_util.UserDetailsResponse;
+import com.example.e_voting_mobile.data.network_util.VotingDataResponse;
 import com.example.e_voting_mobile.database.UserDetailsDatabase;
 import com.example.e_voting_mobile.database.model.UserDetails;
 import com.example.e_voting_mobile.service.voting_history.VotingHistoryService;

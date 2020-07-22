@@ -20,8 +20,8 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.e_voting_mobile.R;
-import com.example.e_voting_mobile.data.security.LoginRequest;
-import com.example.e_voting_mobile.data.security.LoginResponse;
+import com.example.e_voting_mobile.data.network_util.LoginRequest;
+import com.example.e_voting_mobile.data.network_util.LoginResponse;
 import com.example.e_voting_mobile.exceptions.LoginException;
 import com.example.e_voting_mobile.service.SessionManager;
 import com.example.e_voting_mobile.voting_history.HistoryActivity;

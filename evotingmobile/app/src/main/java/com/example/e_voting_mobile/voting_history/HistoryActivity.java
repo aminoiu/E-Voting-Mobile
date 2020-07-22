@@ -21,7 +21,7 @@ import com.example.e_voting_mobile.MainActivity;
 import com.example.e_voting_mobile.NavigationHost;
 import com.example.e_voting_mobile.R;
 import com.example.e_voting_mobile.service.SessionManager;
-import com.example.e_voting_mobile.ui.login.ContactSupportDialogFragment;
+import com.example.e_voting_mobile.ui.support.ContactSupportDialogFragment;
 import com.example.e_voting_mobile.util.NetworkStateReceiver;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;

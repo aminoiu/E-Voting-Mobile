@@ -3,8 +3,8 @@ package com.example.e_voting_mobile.ui.login;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.example.e_voting_mobile.data.security.LoginRequest;
-import com.example.e_voting_mobile.data.security.LoginResponse;
+import com.example.e_voting_mobile.data.network_util.LoginRequest;
+import com.example.e_voting_mobile.data.network_util.LoginResponse;
 import com.example.e_voting_mobile.exceptions.LoginException;
 import com.example.e_voting_mobile.service.login.LoginService;
 

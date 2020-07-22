@@ -1,4 +1,4 @@
-package com.example.e_voting_mobile.ui.login;
+package com.example.e_voting_mobile.ui.history;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.e_voting_mobile.R;
-import com.example.e_voting_mobile.data.security.VotingDataResponse;
+import com.example.e_voting_mobile.data.network_util.VotingDataResponse;
 import com.example.e_voting_mobile.data.voting_data.VotingDataInfo;
 import com.example.e_voting_mobile.database.UserDetailsDatabase;
 import com.example.e_voting_mobile.service.SessionManager;

@@ -1,7 +1,7 @@
 package com.example.e_voting_mobile.service.login;
 
-import com.example.e_voting_mobile.data.security.LoginRequest;
-import com.example.e_voting_mobile.data.security.LoginResponse;
+import com.example.e_voting_mobile.data.network_util.LoginRequest;
+import com.example.e_voting_mobile.data.network_util.LoginResponse;
 import com.example.e_voting_mobile.service.rest_api.ApiClient;
 import com.example.e_voting_mobile.service.rest_api.ApiLogin;
 

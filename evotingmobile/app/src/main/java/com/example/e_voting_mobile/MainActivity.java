@@ -19,7 +19,7 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import com.example.e_voting_mobile.service.SessionManager;
-import com.example.e_voting_mobile.ui.login.ContactSupportDialogFragment;
+import com.example.e_voting_mobile.ui.support.ContactSupportDialogFragment;
 import com.example.e_voting_mobile.util.NetworkStateReceiver;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;

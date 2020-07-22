@@ -1,4 +1,4 @@
-package com.example.e_voting_mobile.ui.login;
+package com.example.e_voting_mobile.ui.support;
 
 import android.text.Editable;
 

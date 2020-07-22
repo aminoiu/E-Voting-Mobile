@@ -15,6 +15,7 @@ public class NetworkStateReceiver extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
         Log.d("app", "Network connectivity change");
         AlertDialog dialog = new AlertDialog.Builder(context).create();
+        dialog.setCancelable(false);
         dialog.setTitle("Alert");
         dialog.setMessage("There's no network connectivity");
         dialog.setButton(AlertDialog.BUTTON_NEUTRAL, "Retry", (arg0, arg1) -> {

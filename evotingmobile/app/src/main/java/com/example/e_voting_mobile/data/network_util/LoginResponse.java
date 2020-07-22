@@ -1,4 +1,4 @@
-package com.example.e_voting_mobile.data.security;
+package com.example.e_voting_mobile.data.network_util;
 
 import com.google.gson.annotations.SerializedName;
 
